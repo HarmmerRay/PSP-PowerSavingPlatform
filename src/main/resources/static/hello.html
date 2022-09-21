@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="www">
+
+    <div id="账号" class="dowebok">
+        <div class="logo"></div>
+        <div class="form-item">
+            <input
+                    id="userId"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="账号"
+            />
+        </div>
+        <script>console.log("innetText:"+document.getElementById("账号").getAttribute("userId").trim().toString())</script>
+        <div id="密码" class="form-item">
+            <input
+                    id="password"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="登录密码"
+            />
+        </div>
+        <script>console.log("innetHTML:"+document.getElementById("密码").getElementsByClassName("form-item").namedItem())</script>
+        <div class="form-item">
+            <button id="submit"><a href="./repast.html">登 录</a></button>
+        </div>
+        <div class="reg-bar">
+            <a class="reg" href="javascript:">立即注册</a>
+            <a class="forget" href="javascript:">忘记密码</a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

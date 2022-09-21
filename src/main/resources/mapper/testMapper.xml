@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="testMapper">
+    <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
+       resultType：sql语句查询结果集的封装类型,test1即为数据库中的表
+     -->
+    <insert id="insertTest" parameterType="org.example.entity.Test">
+        INSERT INTO test1(uid) values (#{uid});
+    </insert>
+    <delete id="deleteTest" parameterType="org.example.entity.Test">
+        DELETE FROM test1 where uid=#{uid};
+    </delete>
+    <update id="updateTest" parameterType="org.example.entity.Test">
+        UPDATE test1
+        <trim prefix="set" suffixOverrides=",">
+            <if test="uid!=null" >uid=#{uid}</if>
+        </trim>
+        WHERE (uid=#{uid});
+    </update>
+    <select id="selectTestById" resultType="org.example.entity.Test">
+        SELECT * FROM test1 WHERE uid=#{uid};
+    </select>
+    <select id="selectAll" resultType="org.example.entity.Test">
+        SELECT * FROM test1;
+    </select>
+</mapper>
