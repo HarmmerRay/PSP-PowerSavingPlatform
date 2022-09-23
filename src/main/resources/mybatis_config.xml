@@ -22,6 +22,13 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapper/testMapper.xml"/>
+        <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/elecBrakeMapper.xml"/>
+        <mapper resource="mapper/elecBrakeDayMapper.xml"/>
+        <mapper resource="mapper/elecBrakeWeekMapper.xml"/>
+        <mapper resource="mapper/socketMapper.xml"/>
+        <mapper resource="mapper/socketDayMapper.xml"/>
+        <mapper resource="mapper/socketWeekMapper.xml"/>
+
     </mappers>
 </configuration>
