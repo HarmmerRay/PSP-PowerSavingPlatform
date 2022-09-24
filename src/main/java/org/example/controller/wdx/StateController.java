@@ -22,7 +22,6 @@ public class StateController {
     @ApiImplicitParam(name = "state", value = "状态值", dataType = "int", required = true)
     public ResultClose close(
             @RequestParam("state") int state) {
-
         return StateService.state(state);
     }
 
