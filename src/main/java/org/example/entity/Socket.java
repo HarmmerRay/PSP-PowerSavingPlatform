@@ -1,14 +1,13 @@
 package org.example.entity;
 
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 //get() set()
 
 @AllArgsConstructor
@@ -23,10 +22,11 @@ import java.util.Date;
 @ApiModel("用户对象")
 //swagger上标记用途
 
-@EntityScan
+@Data
 public class Socket {
-    private Integer cId;
-    private Integer zId;
+    private Integer cid;
+    private Integer zid;
+    private String uid;
     private Integer status;
     private Float u;
     private Float i;

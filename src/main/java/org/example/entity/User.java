@@ -2,10 +2,7 @@ package org.example.entity;
 
 import io.grpc.ManagedChannelProvider;
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 /**
@@ -13,7 +10,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
  */
 
 
-@Data
+@Getter
+@Setter
 //get() set()
 
 @AllArgsConstructor
@@ -27,13 +25,16 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @ApiModel("用户对象")
 //swagger上标记用途
 
-@EntityScan
+@Data
 public class User {
-    private String uId;
-    private String uPassword;
-    private String uName;
-    private boolean uGender;
-    private String uTelephone;
+
+    //数据库中的名字都是uid upassword没有 aA格式
+
+    private String uid;
+    private String upassword;
+    private String uname;
+    private boolean ugender;
+    private String utelephone;
     private Integer elecCharge;
 
 }

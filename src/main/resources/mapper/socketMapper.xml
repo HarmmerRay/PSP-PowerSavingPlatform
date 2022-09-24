@@ -3,16 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
-<mapper namespace="socketWeekMapper">
-    <insert id="insertSocketWeek" parameterType="org/example/entity/Socket">
-        INSERT INTO socketWeek(cid,zid,uid,status,u,i,p,w,t) values (#{cid},#{zid},#{uid},#{status},#{u},#{i},#{p},#{w},#{t});
+<mapper namespace="socketMapper">
+    <insert id="insertSocket" parameterType="org/example/entity/Socket">
+        INSERT INTO socket(cid,zid,uid,status,u,i,p,w,t) values (#{cid},#{zid},#{uid},#{status},#{u},#{i},#{p},#{w},#{t});
     </insert>
-    <delete id="deleteSocketWeek" parameterType="org/example/entity/Socket">
+    <delete id="deleteSocket" parameterType="org/example/entity/Socket">
 
-        DELETE  FROM socketWeek WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
+        DELETE  FROM socket WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
     </delete>
-    <update id="updateSocketWeek" parameterType="org/example/entity/Socket">
-        UPDATE socketWeek
+    <update id="updateSocket" parameterType="org/example/entity/Socket">
+        UPDATE socket
         <trim prefix="set" suffixOverrides=",">
             <if test="status!=null">status=#{status}</if>
             <if test="u!=null">u=#{u},</if>
@@ -23,11 +23,11 @@
         </trim>
         WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
     </update>
-    <select id="selectSocketWeek" resultType="org/example/entity/Socket">
-        SELECT * FROM socketWeek WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
+    <select id="selectSocket" resultType="org/example/entity/Socket">
+        SELECT * FROM socket WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
     </select>
     <select id="selectAll" resultType="org/example/entity/Socket">
-        SELECT * FROM socketWeek;
+        SELECT * FROM socket;
     </select>
 
 </mapper>

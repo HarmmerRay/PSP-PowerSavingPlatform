@@ -8,18 +8,26 @@
         INSERT INTO elecBrake(zid,uid,status,u,i,p,w,t) values (#{zid},#{uid},#{status},#{u},#{i},#{p},#{w},#{t});
     </insert>
     <delete id="deleteElecBrake" parameterType="org/example/entity/ElecBrake">
+
         DELETE FROM elecBrake where zid = #{zid};
     </delete>
     <update id="updateElecBrake" parameterType="org/example/entity/ElecBrake">
         UPDATE elecBrake
         <trim prefix="set" suffixOverrides=",">
+        <if test="status!=null">status=#{status}</if>
+            <if test="u!=null">u=#{u},</if>
+            <if test="i!=null">i=#{i},</if>
+            <if test="p!=null">p=#{p},</if>
+            <if test="w!=null">w=#{w},</if>
+            <if test="t!=null">t=#{t}</if>
         </trim>
+            WHERE (zid=#{zid} AND uid=#{uid});
     </update>
     <select id="selectElecBrake" resultType="org/example/entity/ElecBrake">
-
+        SELECT * FROM elecBrake WHERE (zid=#{zid} AND uid=#{uid});
     </select>
     <select id="selectAll" resultType="org/example/entity/ElecBrake">
-
+        SELECT * FROM elecBrake;
     </select>
 
 </mapper>
