@@ -4,17 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
 <mapper namespace="elecBrakeMapper">
-    <insert id="insertElecBrake" parameterType="org/example/entity/ElecBrake">
+    <insert id="insertElecBrake" parameterType="org.example.entity.ElecBrake">
         INSERT INTO elecBrake(zid,uid,status,u,i,p,w,t) values (#{zid},#{uid},#{status},#{u},#{i},#{p},#{w},#{t});
     </insert>
-    <delete id="deleteElecBrake" parameterType="org/example/entity/ElecBrake">
+    <delete id="deleteElecBrake" parameterType="org.example.entity.ElecBrake">
 
         DELETE FROM elecBrake where zid = #{zid};
     </delete>
-    <update id="updateElecBrake" parameterType="org/example/entity/ElecBrake">
+    <update id="updateElecBrake" parameterType="org.example.entity.ElecBrake">
         UPDATE elecBrake
         <trim prefix="set" suffixOverrides=",">
-        <if test="status!=null">status=#{status}</if>
+        <if test="status!=null">status=#{status},</if>
             <if test="u!=null">u=#{u},</if>
             <if test="i!=null">i=#{i},</if>
             <if test="p!=null">p=#{p},</if>
@@ -23,10 +23,10 @@
         </trim>
             WHERE (zid=#{zid} AND uid=#{uid});
     </update>
-    <select id="selectElecBrake" resultType="org/example/entity/ElecBrake">
+    <select id="selectElecBrake" resultType="org.example.entity.ElecBrake">
         SELECT * FROM elecBrake WHERE (zid=#{zid} AND uid=#{uid});
     </select>
-    <select id="selectAll" resultType="org/example/entity/ElecBrake">
+    <select id="selectAll" resultType="org.example.entity.ElecBrake">
         SELECT * FROM elecBrake;
     </select>
 
