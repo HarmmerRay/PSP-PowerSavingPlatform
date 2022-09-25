@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="socketDayMapper">
+    <insert id="insertSocketDay" parameterType="org.example.entity.Socket">
+        INSERT INTO socketDay(cid,zid,uid,status,u,i,p,w,t) values (#{cid},#{zid},#{uid},#{status},#{u},#{i},#{p},#{w},#{t});
+    </insert>
+    <delete id="deleteSocketDay" parameterType="org.example.entity.Socket">
+
+        DELETE  FROM socketDay WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
+    </delete>
+    <update id="updateSocketDay" parameterType="org.example.entity.Socket">
+        UPDATE socketDay
+        <trim prefix="set" suffixOverrides=",">
+            <if test="status!=null">status=#{status},</if>
+            <if test="u!=null">u=#{u},</if>
+            <if test="i!=null">i=#{i},</if>
+            <if test="p!=null">p=#{p},</if>
+            <if test="w!=null">w=#{w},</if>
+            <if test="t!=null">t=#{t}</if>
+        </trim>
+        WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
+    </update>
+    <select id="selectSocketDay" resultType="org.example.entity.Socket">
+        SELECT * FROM socketDay WHERE (cid=#{cid} AND zid=#{zid} AND uid=#{uid});
+    </select>
+    <select id="selectAll" resultType="org.example.entity.Socket">
+        SELECT * FROM socketDay;
+    </select>
+
+</mapper>

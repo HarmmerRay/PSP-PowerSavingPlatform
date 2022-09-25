@@ -125,11 +125,19 @@
             <version>3.2.8</version>
         </dependency>
 
+<!--        mybatis_generator-->
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.generator</groupId>-->
+<!--            <artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--            <version>1.4.1</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
 
 
     </dependencies>
@@ -144,5 +152,31 @@
 <!--            </plugin>-->
 <!--        </plugins>-->
 <!--    </build>-->
+    <!--maven使用mybatis_generator 所需插件-->
+<!--<build>-->
+<!--    <plugins>-->
+<!--        <plugin>-->
+<!--            <groupId>org.mybatis.generator</groupId>-->
+<!--            <artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--            <version>1.4.1</version>-->
+<!--            <executions>-->
+<!--                <execution>-->
+<!--                    <id>Generate MyBatis Artifacts</id>-->
+<!--                    <goals>-->
+<!--                        <goal>generate</goal>-->
+<!--                    </goals>-->
+<!--                </execution>-->
+<!--            </executions>-->
+<!--            <configuration>-->
+<!--                &lt;!&ndash; 输出详细信息 &ndash;&gt;-->
+<!--                <verbose>true</verbose>-->
+<!--                &lt;!&ndash; 覆盖生成文件 &ndash;&gt;-->
+<!--                <overwrite>true</overwrite>-->
+<!--                &lt;!&ndash; 定义配置文件 &ndash;&gt;-->
+<!--                <configurationFile>${basedir}/src/main/resources/generator-config.xml</configurationFile>-->
+<!--            </configuration>-->
+<!--        </plugin>-->
+<!--    </plugins>-->
+<!--</build>-->
 
 </project>
