@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="userMapper">
+    <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
+       resultType：sql语句查询结果集的封装类型,user即为数据库中的表
+     -->
+    <insert id="insertUser" parameterType="org.example.entity.User">
+        INSERT INTO user(uid,upassword,uname,ugender,utelephone,elecCharge) values (#{uid},#{upassword},#{uname},#{ugender},#{utelephone},#{elecCharge});
+    </insert>
+    <delete id="deleteUser" parameterType="org.example.entity.User">
+        DELETE FROM user where uid=#{uid};
+    </delete>
+    <update id="updateUser" parameterType="org.example.entity.User">
+        UPDATE user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="upassword!=null" >upassword=#{upassword},</if>
+            <if test="uname!=uname" >uname=#{uname},</if>
+            <if test="ugender!=null" >ugender=#{ugender},</if>
+            <if test="utelephone!=null" >utelephone=#{utelephone},</if>
+            <if test="elecCharge!=null" >elecCharge=#{elecCharge}</if>
+        </trim>
+        WHERE (uid=#{uid});
+    </update>
+    <select id="selectUser" resultType="org.example.entity.User">
+        SELECT * FROM user WHERE uid=#{uid};
+    </select>
+    <select id="selectAll" resultType="org.example.entity.User">
+        SELECT * FROM user;
+    </select>
+</mapper>
