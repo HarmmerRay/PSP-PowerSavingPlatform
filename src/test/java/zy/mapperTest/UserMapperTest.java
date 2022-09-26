@@ -35,13 +35,13 @@ public class UserMapperTest {
         user.setUgender(true);
         user.setUtelephone("13290824341");
         user.setElecCharge(0);
-        userMapper.insertUser(user);
+        int rv=userMapper.insertUser(user);
+        System.out.println(rv);
     }
     @Test
     public void delete(){
         User user=new User();
         user.setUid("000000");
-
         System.out.println(userMapper.deleteUser(user));
     }
     @Test
