@@ -1,9 +1,7 @@
 package org.example.controller.zy;
 
-import org.example.service.zy.MonitorService;
-import org.example.service.zy.ProtectService;
-import org.example.service.zy.ProtectServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.service.zy.serviceInterface.ProtectService;
+import org.example.service.zy.interfaceImpl.ProtectServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

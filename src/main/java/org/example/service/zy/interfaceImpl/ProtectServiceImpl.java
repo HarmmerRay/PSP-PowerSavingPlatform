@@ -1,8 +1,10 @@
-package org.example.service.zy;
+package org.example.service.zy.interfaceImpl;
 
 import org.example.entity.ElecBrake;
 import org.example.entity.Socket;
 import org.example.entity.User;
+import org.example.service.zy.serviceInterface.MonitorService;
+import org.example.service.zy.serviceInterface.ProtectService;
 import org.springframework.stereotype.Service;
 
 /**

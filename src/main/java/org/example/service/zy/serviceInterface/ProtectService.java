@@ -1,4 +1,4 @@
-package org.example.service.zy;
+package org.example.service.zy.serviceInterface;
 
 import org.example.entity.ElecBrake;
 import org.example.entity.Socket;

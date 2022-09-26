@@ -3,6 +3,8 @@ package org.example.mapper.zy.impl;
 import org.apache.ibatis.session.SqlSession;
 import org.example.entity.User;
 import org.example.mapper.zy.UserMapper;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
+    @CacheEvict(key = "#user.uid")
     public int deleteUser(User user) {
         return sqlSession.delete("userMapper.deleteUser",user);
     }
@@ -28,12 +31,14 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
+    @Cacheable(key = "#user.uid",unless = "#result==null")
     public User selectUser(User user) {
         return sqlSession.selectOne("userMapper.selectUser",user);
 
     }
 
     @Override
+    @Cacheable(key = "#result.hashCode()",unless = "#result==null")
     public List<User> selectAll() {
         return sqlSession.selectList("userMapper.selectAll");
     }
