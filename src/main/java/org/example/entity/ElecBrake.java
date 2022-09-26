@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.Date;
 
+/**
+ * @author zy
+ */
 @Getter
 @Setter
 //get() set()
@@ -24,7 +27,7 @@ import java.util.Date;
 //swagger上标记用途
 
 @Data
-public class ElecBrake {
+public class ElecBrake extends Brake{
     private Integer zid;
     private String uid;
     private Integer status;

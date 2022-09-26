@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.Date;
 
+/**
+ * @author zy
+ */
 @Getter
 @Setter
 //get() set()
@@ -23,7 +26,7 @@ import java.util.Date;
 //swagger上标记用途
 
 @Data
-public class Socket {
+public class Socket extends Brake{
     private Integer cid;
     private Integer zid;
     private String uid;
