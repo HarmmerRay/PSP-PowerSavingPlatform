@@ -8,6 +8,8 @@ public interface UserService {
     ResultVo addUser(String uid, String upassword, String uname, Integer ugender, String utelephone, Integer elecCharge);
     // 根据用户名查询用户
     ResultVo checkLogin(String name, String password);
+
+    String md5(String password);
 }
 
 

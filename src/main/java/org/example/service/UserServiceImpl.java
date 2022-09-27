@@ -1,20 +1,22 @@
 package org.example.service;
 
-
-import org.example.MD5Utils;
 import org.example.ResultVo;
 import org.example.entity.User;
-import org.example.mapper.UserDAO;
+import org.example.mapper.wgy.UserDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Resource
     private UserDAO userDAO;
+    private UserService userService;
 
     @Transactional
     public ResultVo addUser(String uid, String upassword, String uname, Integer ugender, String utelephone, Integer elecCharge) {
@@ -24,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
             // 2. 如果用户不存在，则添加用户
             if(user == null) {
-                String pwd = MD5Utils.md5(upassword);
+                String pwd = userService.md5(upassword);
                 user = new User();
                 user.setUid(uid);
                 user.setUpassword(upassword);
@@ -53,13 +55,27 @@ public class UserServiceImpl implements UserService {
             return new ResultVo(500, "用户不存在", null);
         } else {
             // 2. 如果用户存在，则校验密码是否正确
-            String pwd = MD5Utils.md5(password);
+            String pwd = userService.md5(password);
             if(pwd.equals(user.getUpassword())) {
                 return new ResultVo(200, "登录成功", user);
             } else {
                 return new ResultVo(500, "密码错误", null);
             }
         }
+    }
+    public String md5(String password) {
+        //生成一个md5加密器
+        try{
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //计算MD5 的值
+            md.update(password.getBytes());
+            //BigInteger 将8位的字符串 转成16位的字符串 得到的字符串形式是哈希码值
+            //BigInteger(参数1,参数2) 参数1 是 1为正数 0为0 -1为负数
+            return new BigInteger(1, md.digest()).toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
 
