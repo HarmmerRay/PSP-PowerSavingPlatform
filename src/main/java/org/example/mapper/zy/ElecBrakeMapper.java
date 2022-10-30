@@ -10,4 +10,5 @@ public interface ElecBrakeMapper {
     public int updateElecBrake(ElecBrake elecBrake);
     public ElecBrake selectElecBrake(ElecBrake elecBrake);
     public List<ElecBrake> selectAll();
+
 }

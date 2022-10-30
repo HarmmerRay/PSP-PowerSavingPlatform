@@ -14,6 +14,7 @@ import org.example.mapper.zy.impl.ElecBrakeMapperImpl;
 import org.example.mapper.zy.impl.ElecBrakeWeekMapperImpl;
 import org.example.mapper.zy.impl.SocketMapperImpl;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -35,53 +36,29 @@ public interface MonitorService {
      * 向下转型: 可以用到子类有但父类不存在的方法.
      */
 
-    public static Brake show(Brake brake) {
-
-        try{
-            Socket socket=(Socket) brake;
-            System.out.println(socket);
-            return socket;
-        }catch (Exception e){
-            ElecBrake elecBrake=(ElecBrake) brake;
-            System.out.println(elecBrake);
-            return elecBrake;
-        }
-
-    }
     /**
-     * 向数据库写入东西
-     */
-    public static int storage(Brake brake) throws IOException {
-        String resource = "mybatis_config.xml";
-        SqlSession sqlSession;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        sqlSession = sqlSessionFactory.openSession();
-        try {
-            Socket socket = (Socket) brake;
-            SocketMapper socketMapper = new SocketMapperImpl(sqlSession);
-           return socketMapper.insertSocket(socket);
 
-        } catch (Exception e) {
-            ElecBrake elecBrake = (ElecBrake) brake;
-            ElecBrakeMapper elecBrakeMapper = new ElecBrakeMapperImpl(sqlSession);
-           return elecBrakeMapper.insertElecBrake(elecBrake);
-        }
-    }
-    /**
-     * 生产 电压 电流 温度 数据
-     * 插座
-     *      可以用继承优化
      * @return
      */
-    public Socket produceSocket(User user, ElecBrake elecBrake, Socket socket);
+    /**
+     *
+     * 生产 电压 电流 温度 数据
+     *    插座
+     *         可以用继承优化
+     * @param user  登录后有整个的user对象
+     * @param elecBrake  只把 zid 封装成的对象
+     * @param socket  只把 cid封装成的对象
+     * @return
+     */
+    public Socket produceSocket(User user, ElecBrake elecBrake, Socket socket) throws IOException;
 
     /**
      * 生产 电压 电流 温度 数据
+     * 产生完成,方法体内直接show 和 存入数据库 和存入缓存
      *  总闸u
      * @return
      */
-    public ElecBrake produceElecBrake(User user,ElecBrake elecBrake);
+    public ElecBrake produceElecBrake(User user,ElecBrake elecBrake) throws IOException;
     /**
      * 监测数据是否异常
      * @return 正常代表1绿  不稳定代表0黄   故障代表-1红

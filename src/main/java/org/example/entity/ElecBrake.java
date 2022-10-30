@@ -5,6 +5,7 @@ import io.swagger.models.auth.In;
 import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -26,8 +27,8 @@ import java.util.Date;
 @ApiModel("用户对象")
 //swagger上标记用途
 
-@Data
-public class ElecBrake extends Brake{
+
+public class ElecBrake extends Brake implements Serializable {
     private Integer zid;
     private String uid;
     private Integer status;
@@ -38,4 +39,20 @@ public class ElecBrake extends Brake{
     private Float t;
     private Date createTime;
     private Date updateTime;
+
+    @Override
+    public String toString() {
+        return "ElecBrake{" +
+                "zid=" + zid +
+                ", uid='" + uid + '\'' +
+                ", status=" + status +
+                ", u=" + u +
+                ", i=" + i +
+                ", p=" + p +
+                ", w=" + w +
+                ", t=" + t +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }

@@ -6,14 +6,18 @@ import org.example.mapper.zy.ElecBrakeDayMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 /**
  * @author zy
  */
+
 public class ElecBrakeDayMapperImpl implements ElecBrakeDayMapper {
     public SqlSession sqlSession;
     public ElecBrakeDayMapperImpl(SqlSession sqlSession){this.sqlSession=sqlSession;}
+
     @Override
     public int insertElecBrakeDay(ElecBrake elecBrake) {
         return sqlSession.insert("elecBrakeDayMapper.insertElecBrakeDay",elecBrake);
