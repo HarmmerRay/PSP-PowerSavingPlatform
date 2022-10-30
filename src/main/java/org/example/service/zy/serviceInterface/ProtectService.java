@@ -3,11 +3,13 @@ package org.example.service.zy.serviceInterface;
 import org.example.entity.ElecBrake;
 import org.example.entity.Socket;
 import org.example.entity.User;
+import org.springframework.stereotype.Service;
 
 /**
  *   保护
  * @author zy
  */
+@Service
 public interface ProtectService {
     /**
      *自我保护方法，守护进程

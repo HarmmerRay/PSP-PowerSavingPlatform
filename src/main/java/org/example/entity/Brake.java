@@ -1,11 +1,12 @@
 package org.example.entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * @author zy
  */
-public class Brake {
+public class Brake implements Serializable {
     /**
      * Returns a hash code value for the object. This method is
      * supported for the benefit of hash tables such as those provided by

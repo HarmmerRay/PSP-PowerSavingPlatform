@@ -1,12 +1,17 @@
 package org.example.mapper.zy.impl;
 
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.entity.Socket;
 import org.example.mapper.zy.SocketMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 /**
  * @author zy
@@ -14,9 +19,17 @@ import java.util.List;
 public class SocketMapperImpl implements SocketMapper{
     public SqlSession sqlSession;
     public SocketMapperImpl(SqlSession sqlSession){this.sqlSession=sqlSession;}
+    public SocketMapperImpl() throws IOException {
+        String resource="mybatis_config.xml";
+        InputStream inputStream= Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+        sqlSession=sqlSessionFactory.openSession();
+    }
     @Override
     public int insertSocket(Socket socket) {
-        return sqlSession.insert("socketMapper.insertSocket",socket);
+        int a=sqlSession.insert("socketMapper.insertSocket",socket);
+        sqlSession.commit();
+        return a;
     }
 
     @Override

@@ -23,13 +23,14 @@ public class UserMapperTest {
         InputStream inputStream= Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
         sqlSession=sqlSessionFactory.openSession();
+
         this.userMapper=new UserMapperImpl(sqlSession);
     }
 
     @Test
     public void insert(){
         User user=new User();
-        user.setUid("000000");
+        user.setUid("000001");
         user.setUpassword("000000");
         user.setUname("zy");
         user.setUgender(true);

@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -25,8 +26,8 @@ import java.util.Date;
 @ApiModel("用户对象")
 //swagger上标记用途
 
-@Data
-public class Socket extends Brake{
+
+public class Socket extends Brake implements Serializable {
     private Integer cid;
     private Integer zid;
     private String uid;
@@ -38,4 +39,21 @@ public class Socket extends Brake{
     private Float t;
     private Date createTime;
     private Date updateTime;
+
+    @Override
+    public String toString() {
+        return "Socket{" +
+                "cid=" + cid +
+                ", zid=" + zid +
+                ", uid='" + uid + '\'' +
+                ", status=" + status +
+                ", u=" + u +
+                ", i=" + i +
+                ", p=" + p +
+                ", w=" + w +
+                ", t=" + t +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }
